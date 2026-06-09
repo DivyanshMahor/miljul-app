@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:online_class/feature/auth/screen/google_login_screen.dart';
-import 'package:online_class/feature/home/app_main_screen.dart';
+import 'package:online_class/feature/home/screen/app_main_screen.dart';
 
 import 'firebase_options.dart';
 

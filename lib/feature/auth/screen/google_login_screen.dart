@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_class/core/utils/colors.dart';
 import 'package:online_class/feature/auth/service/auth_method.dart';
-import 'package:online_class/feature/home/app_main_screen.dart';
+import 'package:online_class/feature/home/screen/app_main_screen.dart';
 import 'package:online_class/route.dart';
 
 import '../../../core/utils/utils.dart';

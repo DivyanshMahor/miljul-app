@@ -1,11 +1,11 @@
 import 'dart:math';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:online_class/core/model/new_meeting_model.dart';
 
 class MeetingNotifier extends StateNotifier <MeetingState>{
-  MeetingNotifier():super(
+    MeetingNotifier():super(
     MeetingState(
       isMicOff: false, //initially false set
       isCameraOff: false,

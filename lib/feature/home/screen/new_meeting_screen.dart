@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:online_class/core/utils/colors.dart';
 import 'package:online_class/core/provider/new_meeting_provider.dart';
+import 'package:online_class/feature/home/lib/resources/start_meeting_method.dart';
+import 'package:online_class/feature/home/widgets/customer_button.dart';
 
 class NewMeetingScreen extends ConsumerStatefulWidget {
   const NewMeetingScreen({super.key});
@@ -83,11 +85,31 @@ class _NewMeetingScreenState extends ConsumerState<NewMeetingScreen> {
                   fillColor: Colors.green.withAlpha(30),
                   filled: true,
                   border: InputBorder.none,
-                  hintText: "Name",
-
-                ),
+                  hintText: "Name",),
               ),
             ),
+            
+            //Toggle mic option
+            SwitchListTile.adaptive(
+                title: Text("Mute Microphone"),
+                value: meetingState.isMicOff, onChanged: (val) => ref.read(meetingProvider.notifier).toggleMic(val)),
+
+            //Toggle camera option
+            SwitchListTile(
+              title: Text("Turn Off Camera"),
+                value: meetingState.isCameraOff,
+                onChanged: (val) =>
+                    ref.read(
+                        meetingProvider.notifier).toggleCamera(val) ),
+
+            //state meeting button
+            CustomButton(text: "Start a Meeting", onPressed: (){
+              //Call startMeeting method with name inputs
+              
+              startMeeting(ref, context, nameController);
+
+            })
+            
           ],
         ),
       ),

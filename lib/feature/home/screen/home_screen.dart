@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:online_class/core/utils/colors.dart';
-import 'package:online_class/feature/home/new_meeting_screen.dart';
+import 'package:online_class/feature/home/screen/new_meeting_screen.dart';
 import 'package:online_class/route.dart';
 
 class HomeScreen extends StatelessWidget {

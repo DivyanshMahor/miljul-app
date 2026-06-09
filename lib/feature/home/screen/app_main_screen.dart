@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:online_class/core/utils/colors.dart';
-import 'package:online_class/feature/home/home_screen.dart';
-import 'package:online_class/feature/home/profile_screen.dart';
+// import 'package:online_class/feature/home/home_screen.dart';
+import 'package:online_class/feature/home/screen/profile_screen.dart';
+
+import 'home_screen.dart';
 
 
 class AppMainScreen extends StatefulWidget {
