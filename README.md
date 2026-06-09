@@ -1,17 +1,52 @@
-# online_class
+👋 Hey, I'm Divyansh Mahor
 
-A new Flutter project.
+🚀 Flutter Developer | App Builder | Future Full Stack Engineer
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 💡 About Me
 
-A few resources to get you started if this is your first Flutter project:
+- 📱 Building real-world apps using Flutter
+- 🔥 Currently working on: Miljul (Online Class App)
+- 🌱 Learning Firebase, Riverpod & Backend systems
+- 🎯 Goal: Land a high-paying developer job + build startup-level apps
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+🚀 Current Project
+
+🌐 Miljul
+A real-time online class & meeting app for students and teachers.
+
+Features:
+- 🔐 Google Sign-In Authentication  
+- 🏫 Create & Join Live Classes / Meetings  
+- 🎤 Mute / Unmute Audio  
+- 📹 Enable / Disable Video  
+- 👤 Change Display Name before joining  
+- 🧑‍🏫 Admin & User Role System  
+- 👥 Live Participant List with Count  
+- ✅ Accept / Reject Participants (Admin Only)  
+- ❌ Remove Users from Class (Admin Only)  
+- 🔄 Switch Front / Rear Camera  
+- 💬 Real-Time Chat during Class  
+- 📊 Grid View of Participants  
+- 📺 Screen Sharing Support  
+- 🚪 End Class / Logout System
+
+---
+
+🛠️ Tech Stack
+
+- Flutter
+- Dart
+- Firebase
+- Riverpod
+- WebRTC
+
+---
+
+📫 Connect with Me
+
+- GitHub: DivyanshMahor
+- Building apps that solve real problems 💙
