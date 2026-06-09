@@ -6,8 +6,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 class GoogleSignInService{
   static final FirebaseAuth _auth = FirebaseAuth.instance;
   static final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
+
   static bool isInitialize =false;
   static Future<void> initSignIn() async {
+
     if (!isInitialize){
       await _googleSignIn.initialize(
         serverClientId: '851597508701-65kfojvkbnqj9em6qca61kgtkkpd7aas.apps.googleusercontent.com'
@@ -44,14 +46,45 @@ static Future<UserCredential?> signInWithGoogle() async{
       final UserCredential  userCredential =await FirebaseAuth.instance.signInWithCredential(credential);
 
       final User? user = userCredential.user;
-      if(user != null) {
-        final userDoc = FirebaseFirestore.instance
-            .collection('users')
-            .doc(user.uid);
+
+      if(user !=null){
+        final userDoc = FirebaseFirestore.instance.collection('users').doc(user.uid);
+
+        final docSnapshot =await userDoc.get();
+
+        if(!docSnapshot.exists){
+          await userDoc.set({
+            'uid': user.uid,
+            'name': user.displayName ?? " ",
+            'email': user.email ?? " ",
+            'photoURL': user.photoURL ?? ' ',
+            'provider': 'google',
+            'createdAt': FieldValue.serverTimestamp(),
+
+          });
+        }
       }
-
-
+      return userCredential;
+    }catch (e){
+        print("Error for Signing out: $e");
+        throw e;
     }
+}
+
+//sign out
+  static Future<void> signOut() async {
+      try{
+        await _googleSignIn.signOut();
+        await _auth.signOut();
+      } catch (e) {
+        print('Error signing out: $e');
+        throw e;
+      }
+  }
+
+ //get current user
+static User? getCurrentUser(){
+    return _auth.currentUser;
 
 }
 }

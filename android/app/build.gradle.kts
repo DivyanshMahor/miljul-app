@@ -8,10 +8,12 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+val kotlin_version = project.findProperty("kotlin_version") as String
+
 android {
     namespace = "com.example.online_class"
-    compileSdk = 35
-    ndkVersion = "27.0.12077973"
+    compileSdk = 36
+    ndkVersion = "28.2.13676358"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -19,7 +21,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = "17"
     }
 
     defaultConfig {
@@ -38,10 +40,17 @@ android {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("debug")
+
+            proguardFiles(
+                getDefaultProguardFile("proguard-android.txt"),
+                "proguard-rules.pro")
         }
     }
 }
 
 flutter {
     source = "../.."
+}
+dependencies {
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
 }
