@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class _MeetingRoomScreenState extends State<MeetingRoomScreen> {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: SafeArea(child: ZegoUIKitPrebuiltVideoConference(
         appID: appID, // Fill in the appID that you get from ZEGOCLOUD Admin Console.
         appSign: appSign, // Fill in the appSign that you get from ZEGOCLOUD Admin Console.
@@ -38,7 +40,32 @@ class _MeetingRoomScreenState extends State<MeetingRoomScreen> {
         conferenceID: widget.roomId.trim(),
         config: ZegoUIKitPrebuiltVideoConferenceConfig()
           ..turnOnCameraWhenJoining = !widget.isCameraOff
-          ..turnOnMicrophoneWhenJoining = !widget.isMicOff,
+          ..turnOnMicrophoneWhenJoining = !widget.isMicOff
+          ..layout = ZegoLayout.gallery()
+
+          //top menu bar
+        ..topMenuBarConfig = ZegoTopMenuBarConfig(
+          isVisible: true,
+          backgroundColor: Colors.transparent,
+          title: "",
+            buttons: [
+              ZegoMenuBarButtonName.switchCameraButton,
+              ZegoMenuBarButtonName.switchAudioOutputButton,
+            ],
+          // extendButtons: [
+            //waiting list button (only for host can see),
+            // if(widget.isHost)
+              // StreamBuilder(stream: FirebaseFirestore.instance
+              //     .collection("rooms")
+              //     .doc(widget.roomId)
+              //     .collection("waitingList")
+              //     .where("status", isEqualTo: "waiting")
+              //     .snapshots()  ,
+
+                  // builder: builder)
+          // ]
+        )
+
       ),),
 
 

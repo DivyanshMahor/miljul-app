@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:online_class/core/utils/colors.dart';
 import 'package:online_class/core/provider/new_meeting_provider.dart';
-import 'package:online_class/feature/home/lib/resources/start_meeting_method.dart';
 import 'package:online_class/feature/home/widgets/customer_button.dart';
+
+import '../../../resources/start_meeting_method.dart';
 
 class NewMeetingScreen extends ConsumerStatefulWidget {
   const NewMeetingScreen({super.key});

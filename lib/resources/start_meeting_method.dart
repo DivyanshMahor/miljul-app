@@ -7,11 +7,10 @@ import 'package:online_class/feature/home/screen/meeting_room_screen.dart';
 import 'package:online_class/route.dart';
 
 void startMeeting(
-    WidgetRef ref,
-    BuildContext context,
-    TextEditingController nameController,
-    ) async {
-
+  WidgetRef ref,
+  BuildContext context,
+  TextEditingController nameController,
+) async {
   //current logged-in Firebase user
   final currentUser = FirebaseAuth.instance.currentUser;
 
@@ -23,24 +22,23 @@ void startMeeting(
   //also check it during joining other user
   //if match the room id then call will happen on this same room
 
-  await FirebaseFirestore.instance
-  .collection("rooms").doc(state.roomID).set(    {
-      "createdBy": currentUser?.uid, //who created the room
-      "hostId": currentUser?.uid, // host user id
-      "hostName": currentUser?.displayName,
-      "timestamp": FieldValue.serverTimestamp(),
-      "roomId": state.roomID, //unique room id every time
-
-    }
-  );
+  await FirebaseFirestore.instance.collection("rooms").doc(state.roomID).set({
+    "createdBy": currentUser?.uid, //who created the room
+    "hostId": currentUser?.uid, // host user id
+    "hostName": currentUser?.displayName,
+    "timestamp": FieldValue.serverTimestamp(),
+    "roomId": state.roomID, //unique room id every time
+  });
 
   //Navigate directly to meeting RoomScreen (host joins instantly)
-  NavigationHelper.pushReplacement(context,
-      MeetingRoomScreen(name: nameController.text, roomId: state.roomID,
-    isCameraOff: state.isCameraOff, isMicOff: state.isMicOff, isHost: true,
-
-      )
+  NavigationHelper.pushReplacement(
+    context,
+    MeetingRoomScreen(
+      name: nameController.text,
+      roomId: state.roomID,
+      isCameraOff: state.isCameraOff,
+      isMicOff: state.isMicOff,
+      isHost: true,
+    ),
   );
-
-
 }

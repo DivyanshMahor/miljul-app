@@ -20,7 +20,7 @@ class GoogleSignInService{
     //Sign in with google
 static Future<UserCredential?> signInWithGoogle() async{
     try {
-      initSignIn();
+     await initSignIn();
       final GoogleSignInAccount googleUser = await _googleSignIn.authenticate();
       final idToken = googleUser.authentication.idToken;
       final authorizationClient = googleUser.authorizationClient;
