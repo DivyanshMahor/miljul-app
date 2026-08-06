@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:online_class/feature/home/screen/waiting_approval_screen.dart';
+import 'package:online_class/route.dart';
 import 'package:zego_uikit_prebuilt_video_conference/zego_uikit_prebuilt_video_conference.dart';
 
 import '../../../core/secret/key.dart';
@@ -52,18 +54,45 @@ class _MeetingRoomScreenState extends State<MeetingRoomScreen> {
               ZegoMenuBarButtonName.switchCameraButton,
               ZegoMenuBarButtonName.switchAudioOutputButton,
             ],
-          // extendButtons: [
-            //waiting list button (only for host can see),
-            // if(widget.isHost)
-              // StreamBuilder(stream: FirebaseFirestore.instance
-              //     .collection("rooms")
-              //     .doc(widget.roomId)
-              //     .collection("waitingList")
-              //     .where("status", isEqualTo: "waiting")
-              //     .snapshots()  ,
+          extendButtons: [
+            // waiting list button (only for host can see),
+            if(widget.isHost)
+              StreamBuilder(stream: FirebaseFirestore.instance
+                  .collection("rooms")
+                  .doc(widget.roomId)
+                  .collection("waitingList")
+                  .where("status", isEqualTo: "waiting")
+                  .snapshots(),
+                  builder: (context, snapshot){
+                final waitingCount = snapshot.data?.docs.length ?? 0;
+                return IconButton(onPressed: (){
+                  NavigationHelper.push(context, WaitingApprovalScreen(roomId: widget.roomId),);
+                }, icon: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Icon(Icons.people, color: Colors.white),
+                    if(waitingCount > 0)
+                      Positioned(
+                        right: 0,
+                        top: -5,
+                        child: CircleAvatar(
+                          radius: 8,
+                          backgroundColor: Colors.red,
+                          child: Text(
+                            waitingCount.toString(),
+                            style: TextStyle(
+                              fontSize: 10,
+                              color:Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                  ],
+                ));
+                  },
 
-                  // builder: builder)
-          // ]
+              ),
+          ]
         )
 
       ),),
