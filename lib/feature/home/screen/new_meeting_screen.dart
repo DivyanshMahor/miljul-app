@@ -106,7 +106,7 @@ class _NewMeetingScreenState extends ConsumerState<NewMeetingScreen> {
             //state meeting button
             CustomButton(text: "Start a Meeting", onPressed: (){
               //Call startMeeting method with name inputs
-              
+
               startMeeting(ref, context, nameController);
 
             })
